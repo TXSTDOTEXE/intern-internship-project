@@ -13,8 +13,16 @@ public class BattleState {
     }
 
     void oneRound(){
-        player.tryAttack(enemy.health, enemy.defenseStat);
-        enemy.tryAttack(player.health, player.defenseStat);
+        player.tryAttack(enemy);
+        if (enemy.isDead()){
+            System.println("Player wins!")
+        }
+        enemy.tryAttack(player);
+
+        if (player.isDead()){
+            System.println("Enemy wins!")
+        }
+
     }
 
 
