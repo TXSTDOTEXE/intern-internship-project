@@ -12,20 +12,37 @@ public class Fighter {
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.maxCooldown = maxCooldown;
-        this.cooldown = maxCooldown
+        this.cooldown = maxCooldown;
     }
 
-    public int tryAttack(int otherFighterHealth, int otherFighterDefenseStat) {
-        if (cooldown <= 0) {
-            otherFighterHealth = otherFighterHealth + otherFighterDefenseStat - attackStat;
-            if (otherFighterHealth < 0) {
-                otherFighterHealth = 0;
-            }
-            cooldown = maxCooldown; // Reset cooldown after attack
-        } 
-        else {
-            cooldown--;
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAttackStat() {
+        return attackStat;
+    }
+
+    public int getDefenseStat() {
+        return defenseStat;
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+        if (health < 0) {
+            health = 0;
         }
-        return otherFighterHealth;
+    }
+
+    public boolean isDead() {
+        return health <= 0;
+    }
+
+    public void tryAttack(Fighter otherFighter) {
+        if (cooldown <= 0) {
+            otherFighter.takeDamage(attackStat - otherFighter.getDefenseStat());
+            cooldown = maxCooldown; // Reset cooldown after attack
+        }     cooldown--;
+        }
     }
 }
