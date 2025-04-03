@@ -16,14 +16,7 @@ public class GameWindow extends JFrame {
         setLocationRelativeTo(null);
         
         try {
-            String os = System.getProperty("os.name").toLowerCase();
-            // Adjust file path based on the OS
-            String imagePath;
-            if (os.contains("win")) {
-                imagePath = "AutoBattler/src/assests/background.png"; // Windows path
-            } else {
-                imagePath = "AutoBattler\\src\\assests\\background.png"; // Mac path
-            }
+            String imagePath = "AutoBattler/src/assests/background.png";
             background = ImageIO.read(new File(imagePath));
         } catch (IOException e) {
             e.printStackTrace();
