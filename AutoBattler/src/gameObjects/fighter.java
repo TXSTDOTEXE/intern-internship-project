@@ -14,16 +14,15 @@ public class Fighter {
     }
 
     public int tryAttack(int otherFighterHealth, int otherFighterDefenseStat) {
-        if(cooldown <= 0){
+        if (cooldown <= 0) {
             otherFighterHealth = otherFighterHealth + otherFighterDefenseStat - attackStat;
-            if(otherFighterHealth < 0){
+            if (otherFighterHealth < 0) {
                 otherFighterHealth = 0;
             }
             cooldown = 5; // Reset cooldown after attack
+        } else {
+            cooldown--;
         }
-        else{
-         
-
         return otherFighterHealth;
     }
-}
+}   
