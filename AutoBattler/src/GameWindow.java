@@ -16,7 +16,7 @@ public class GameWindow extends JFrame {
         setLocationRelativeTo(null);
         
         try {
-            String imagePath = "AutoBattler/src/assests/background.png";
+            String imagePath = "AutoBattler/src/assets/background.png";
             background = ImageIO.read(new File(imagePath));
         } catch (IOException e) {
             e.printStackTrace();
