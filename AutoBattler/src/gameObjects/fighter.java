@@ -1,31 +1,29 @@
 package gameObjects;
 
-import java.time.Duration;
-
 public class Fighter {
     int health;
     int attackStat;
     int defenseStat;
-    time lastAttackTime;
-    Duration cooldown;
+    int cooldown;
 
-    fighter(int health, int attackStat, int defenseStat) {
+    public Fighter(int health, int attackStat, int defenseStat, int cooldown) {
         this.health = health;
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
-        lastAttackTime = time.now();
+        this.cooldown = cooldown;
     }
 
-    public int attack(int otherFighterHealth, int otherFighterDefenseStat) {
-        Duration d = Duration.between(lastAttackTime, time.now());
-        if (d.compareTo(cooldown) < 0) {
+    public int tryAttack(int otherFighterHealth, int otherFighterDefenseStat) {
+        if(cooldown <= 0){
             otherFighterHealth = otherFighterHealth + otherFighterDefenseStat - attackStat;
-            if (otherFighterHealth < 0) {
+            if(otherFighterHealth < 0){
                 otherFighterHealth = 0;
             }
-            lastAttackTime = time.now();
+            cooldown = 5; // Reset cooldown after attack
         }
-        
+        else{
+         
+
         return otherFighterHealth;
     }
 }
