@@ -42,7 +42,8 @@ public class Fighter {
         if (cooldown <= 0) {
             otherFighter.takeDamage(attackStat - otherFighter.getDefenseStat());
             cooldown = maxCooldown; // Reset cooldown after attack
-        }     cooldown--;
+        } else {
+            cooldown--;
         }
     }
 }
